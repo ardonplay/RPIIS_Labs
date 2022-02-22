@@ -150,8 +150,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/ardonplay/Documents/Developer/C++_Codes/Pivas/Lab1/cmake-build-debug",
-		"source" : "/Users/ardonplay/Documents/Developer/C++_Codes/Pivas/Lab1"
+		"build" : "/Users/vladimir/Documents/Developer/C++_Codes/RPIIS_Labs/Lab1/cmake-build-debug",
+		"source" : "/Users/vladimir/Documents/Developer/C++_Codes/RPIIS_Labs/Lab1"
 	},
 	"version" : 
 	{
