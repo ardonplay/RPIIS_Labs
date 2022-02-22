@@ -5,7 +5,7 @@
 #include "fenvick.h"
 #include <iostream>
 
-Fenvick::Fenvick(int n)cd
+Fenvick::Fenvick(int n)
 {
     this->n = n;
     array = new int[n];
