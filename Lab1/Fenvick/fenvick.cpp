@@ -5,11 +5,11 @@
 #include "fenvick.h"
 #include <iostream>
 
-Fenvick::Fenvick(int n)
+Fenvick::Fenvick(int  number_of_array_elements)
 {
-    this->n = n;
-    array = new int[n];
-    bit = new int[n];
+    this-> number_of_array_elements =  number_of_array_elements;
+    array = new int[ number_of_array_elements];
+    bit = new int[ number_of_array_elements];
 }
 
 Fenvick::~Fenvick()
@@ -22,7 +22,7 @@ void Fenvick::increase(int index, int delta)
 {
     array[index] += delta;
 
-    for (; index < n; index |= index + 1) {
+    for (; index <  number_of_array_elements; index |= index + 1) {
         bit[index] += delta;
     }
 }
@@ -30,7 +30,6 @@ void Fenvick::increase(int index, int delta)
 int Fenvick::sum(int x)
 {
     int result = 0;
-
     for (; x >= 0; x = (x & (x + 1)) - 1) {
         result += bit[x];
     }

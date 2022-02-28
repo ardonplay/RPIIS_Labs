@@ -9,12 +9,12 @@
 class Fenvick
 {
 private:
-    int n;
+    int number_of_array_elements;
     int  *array;
     int *bit;
 
 public:
-    explicit Fenvick(int n);
+    explicit Fenvick(int number_of_array_elements);
     ~Fenvick();
 
     void increase(int i, int delta);
