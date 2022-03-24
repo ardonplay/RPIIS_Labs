@@ -3,4 +3,4 @@ project(Lab1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Lab1 main.cpp fenvick.cpp fenvick.h)
+add_executable(Lab1 main.cpp Fenvick/fenvick.cpp Fenvick/fenvick.h)
