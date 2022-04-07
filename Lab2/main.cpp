@@ -1,107 +1,117 @@
 #include <iostream>
-#include <vector>
-#include <queue>
 #include <fstream>
 #include <ctime>
-using namespace std;
 
-const int INF = 1e5;
+#define ll long long
+#define INFINITY LLONG_MAX
 
-vector<pair<int, int>> graph[1000000];
+ll graph[5000][5000];
+ll cost[5000];
 
+ll distA[5000];
+ll distB[5000];
 
-int dijkstra(int start, int end, int n){
+void Dijkstra(int n, int start, ll* distances)
+{
+    bool visited[n];
 
-    int ans[1000000];
-    for (int i = 0; i < n; i++) {
-        ans[i] = INF;
+    for(int i = 0; i < n; i++)
+    {
+        distances[i] = graph[start][i];
+        visited[i] = false;
     }
 
-    ans[start] = 0;
+    distances[start] = 0;
+    int index = 0;
 
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+    for(int i = 0; i < n; i++)
+    {
+        ll min = LLONG_MAX;
 
-    q.push({0, start});
-
-    while (!q.empty()) {
-        pair<int, int> c = q.top();
-        q.pop();
-
-        int dst = c.first, v = c.second;
-
-        if (ans[v] < dst) {
-            continue;
+        for(int j = 0; j < n; j++)
+        {
+            if(!visited[j] && distances[j] < min)
+            {
+                min = distances[j];
+                index = j;
+            }
         }
 
-        for (pair<int, int> e: graph[v]) {
-            int u = e.first, len_vu = e.second;
+        visited[index] = true;
 
-            int n_dst = dst + len_vu;
-            if (n_dst < ans[u]) {
-                ans[u] = n_dst;
-                q.push({n_dst, u});
+        for(int j = 0; j < n; j++)
+        {
+            if (!visited[j] && graph[index][j] != INFINITY && distances[index] != INFINITY && (distances[index] + graph[index][j] < distances[j]))
+            {
+                distances[j] = distances[index] + graph[index][j];
             }
         }
     }
-    return ans[end];
-};
-int main(int argc, char *argv[]) {
-    clock_t start_of_time = clock();
-    string destination = "../Tests/16.in";
 
-    if(argv[1] != NULL) {
-        destination = argv[1];
+
+}
+
+void solve(std::ifstream& in)
+{
+    int n, m, k, start, end;
+    in >> n >> m >> k >> start >> end;
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            graph[i][j] = INFINITY;
+        }
+
+        cost[i] = INFINITY;
     }
 
-    ifstream file;
-    file.open(destination);
-    //Ввод графа и вершин start и end.
-    int n, m, k;
-    file >> n >> m >> k;
+    ll a, b, c;
 
-
-    int start, end;
-    file >> start >> end;
-    start--;
-    end--;
-
-
-    int vertex, outex, weight;
-    vector <pair<int, int >> Z_moment;
-    int input_1, input_2;
-    for(int count = 0; count < k; count++){
-        file>>input_1>>input_2;
-        Z_moment.emplace_back(input_1, input_2);
+    for(int i = 0; i < k; i++)
+    {
+        in >> a >> b;
+        cost[a - 1] = b;
     }
 
-
-    for(int index = 0; index < m; index++) {
-        file >> vertex >> outex >> weight;
-        vertex--;
-        outex--;
-        graph[vertex].emplace_back(outex, weight);
-        graph[outex].emplace_back(vertex, weight);
+    for(int i = 0; i < m; i++)
+    {
+        in >> a >> b >> c;
+        graph[a - 1][b - 1] = c;
+        graph[b - 1][a - 1] = c;
     }
 
-    int *output = new int[k];
-    for(int index = 0; index < k; index++){
-        output[index] = dijkstra(start, Z_moment[index].first-1, n) + Z_moment[index].second;
-    }
-    for(int index = 0; index < k; index++){
-        output[index]+=dijkstra(Z_moment[index].first-1, end, n);
-    }
-    int min = output[0];
-    for(int index =0; index < k; index++){
-        if(min > output[index]) {
-            min = output[index];
+    Dijkstra(n, start - 1, distA);
+    Dijkstra(n, end - 1, distB);
+
+    ll min = LLONG_MAX;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(cost[i] != INFINITY)
+        {
+            min = std::min(min, distA[i] + cost[i] + distB[i]);
         }
     }
+    std::ofstream file;
+    file.open("../Output.txt",std::ios::app);
+    std::cout << min << std::endl;
+    file << min << std::endl;
     file.close();
-    ofstream save;
-    save.open("../Output.txt", ios::app);
-    cout<<min<<endl;
-    save << min << endl;
-    clock_t end_of_time = clock();
-    double seconds = (double)(end_of_time - start_of_time) / CLOCKS_PER_SEC;
-    cout<<seconds<<endl;
+}
+
+int main()
+{
+    for(int i = 1; i <= 20; i++)
+    {
+        clock_t start_of_time = clock();
+        std::ifstream is("../Tests/" + std::to_string(i) + ".in");
+        solve(is);
+        is.close();
+        clock_t end_of_time = clock();
+        double seconds = (double)(end_of_time - start_of_time) / CLOCKS_PER_SEC;
+        std::cout<<seconds<<std::endl;
+    }
+
+    return 0;
 }
