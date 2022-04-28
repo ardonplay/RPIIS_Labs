@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "KargersAlgo",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "KargersAlgo::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-KargersAlgo-Debug-e78ca81ee5356e0ffba1.json",
+					"name" : "KargersAlgo",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "MyImplementation::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MyImplementation-Debug-f48b16c8b164b0d49a8b.json",
+					"name" : "MyImplementation",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/vladimir/Documents/Developer/KargersAlgo/cmake-build-debug",
+		"source" : "/Users/vladimir/Documents/Developer/KargersAlgo"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

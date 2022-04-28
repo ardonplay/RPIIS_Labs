@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/ardonplay/Documents/Developer/C++_Codes/RPIIS_Labs/Lab3/cmake-build-debug"
+			"value" : "/Users/vladimir/Documents/Developer/KargersAlgo/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "21"
+			"value" : "22"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "3"
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -515,7 +515,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/ardonplay/Documents/Developer/C++_Codes/RPIIS_Labs/Lab3"
+			"value" : "/Users/vladimir/Documents/Developer/KargersAlgo"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -795,7 +795,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Lab3"
+			"value" : "KargersAlgo"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -839,7 +839,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.21"
+			"value" : "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.22"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1078,7 +1078,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "Lab3_BINARY_DIR",
+			"name" : "KargersAlgo_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1087,10 +1087,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/ardonplay/Documents/Developer/C++_Codes/RPIIS_Labs/Lab3/cmake-build-debug"
+			"value" : "/Users/vladimir/Documents/Developer/KargersAlgo/cmake-build-debug"
 		},
 		{
-			"name" : "Lab3_IS_TOP_LEVEL",
+			"name" : "KargersAlgo_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1102,7 +1102,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "Lab3_SOURCE_DIR",
+			"name" : "KargersAlgo_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1111,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/ardonplay/Documents/Developer/C++_Codes/RPIIS_Labs/Lab3"
+			"value" : "/Users/vladimir/Documents/Developer/KargersAlgo"
 		}
 	],
 	"kind" : "cache",
