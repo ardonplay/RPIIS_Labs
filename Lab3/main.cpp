@@ -1,71 +1,122 @@
-/***************************************************************************
-      Название: Lab3
-   Разработчик: Мощук Владимир Юрьевич
-          Дата: 09.04.2022
-      Описание: программа получает через консольные
-                параметры имя файла, читает из него
-                все  множества, оставляя  в  каждом
-                только  по одному  вхождению любого
-                элемента этого множества;
-                результат выводится  на стандартный
-                вывод
-      Основная задача: Реализовать программу,
-                       формирующую множество равное
-                       симметрической разности
-                       произвольного количества исходных
-                       множеств (без учёта кратных вхождений элементов).
-***************************************************************************/
+#include "Set.h"
+#include "parser.h"
 
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
+
 int main() {
-    int N_A, N_B, choose, element;
-    vector<int> arr_A;
-    vector<int> arr_B;
 
+    clock_t oneTestTime;
+    oneTestTime = clock();
 
-    //Создается пустое множество G.
-    vector<int> arr_C;
+    Set A, B, a, b, big1, big2, result;
 
+    A.pprint();
 
-    for (auto i: arr_A) {                // Выбираем элемент множества  A.
-        for (auto j: arr_B) {            // Выбираем элемент множества B.
-            if (i != j) {                // Если элемент множества  A не равен элементу множества B
-                if (j == arr_B.back())   // Если элемент множества B последний
-                    arr_C.push_back(i);  // Добавляем элемент множества  A в массив С
+    string path = "../test.txt";
+    Parser pars(path);
 
-            } else
-                break;
+    if (pars.isParsedSuccessfully()) {
+
+        for (auto i : pars.parsedSets) {
+            i.pprint();
         }
+
+        A = pars.parsedSets[0];
+        B = pars.parsedSets[1];
+
+        a = pars.parsedSets[2];
+        b = pars.parsedSets[3];
+
+        big1 = pars.parsedSets[5];
+        big2 = pars.parsedSets[6];
+
+
+        cout << endl << endl;
+
+        Set A_diff_B;
+        A_diff_B.difference(A,B);
+        A_diff_B.pprint();
+
+        Set B_diff_A;
+        B_diff_A.difference(B,A);
+        B_diff_A.pprint();
+
+
+        result.unite(A_diff_B,B_diff_A);
+        result.pprint();
+
+        result.cross(A,B);
+        result.pprint();
+
+        cout << endl;
+
+        result.difference(a,b);
+        result.pprint();
+
+        result.difference(b,a);
+        result.pprint();
+
+        result.unite(a,b);
+        result.pprint();
+
+        result.cross(a,b);
+        result.pprint();
+
+        cout << endl;
+
+        result.difference(big1,big2);
+        result.pprint();
+        result.difference(big2,big1);
+        result.pprint();
+        result.unite(big2,big1);
+        result.pprint();
+        result.cross(big2,big1);
+        result.pprint();
+
     }
 
-    for (auto j: arr_B) {                 // Выбираем элемент множества B.
-        for (auto i: arr_A) {             // Выбираем элемент множества A.
-            if (j != i) {                 // Если элемент множества B не равен элементу множества A
-                if (i == arr_A.back())    // Если элемент множества A последний
-                    arr_C.push_back(j);   // Добавляем элемент множества B в массив С
 
-            } else
-                break;
-        }
-    }
+    cout << endl;
 
-    // результат симметрической разности.
-    cout << endl << "Симметрическая разность = {";
-    for (auto x: arr_C) {
-        if (x == arr_C.back())
-            cout << x;
-        else
-            cout << x << ", ";
-    }
-    cout << "}";
+    Set j;
+    j.setSetName("J");
+
+    Set j_inner;
+
+    string i="I";
+    j_inner.push_back(i);
+
+    j_inner.push_back(*(new Set()));
+
+    string aa="A";
+    j_inner.push_back(aa);
+
+    j.push_back(j_inner);
+
+    j.pprint();
+
+    Set g(j);
+    g.setSetName("G");
+    g.pprint();
 
 
-    // завершение программы
-    cout << endl << endl << "Программа завершена.";
+    Set temp;
+    temp.difference(j,g);
+    temp.pprint();
+
+    temp.cross(j,g);
+    temp.pprint();
+
+    temp.unite(j,g);
+    temp.pprint();
+
+
+
+    cout << endl <<"[" << (double)(clock() - oneTestTime) / (double) CLOCKS_PER_SEC << "]" << endl;
+
 
     return 0;
 }
